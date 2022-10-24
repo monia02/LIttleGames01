@@ -1,0 +1,3 @@
+Program losuje liczbę z zakresu 0 do 100
+Twoim zadaniem jest odgadnięcie liczby
+Powodzenia!
