@@ -1,19 +1,15 @@
-package pl.input;
+package pl.monika.littleGames.input;
 
 
-import pl.Action;
+import pl.monika.littleGames.Action;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserInputCommand {
-
-
     private String command;
     private Action action;
     private List<String> param;
-
-
     public UserInputCommand(String line) {
 
         if (line != null) {

@@ -1,14 +1,16 @@
-package pl.handlers;
+package pl.monika.littleGames.handlers;
 
-import pl.dao.WhatNumberIsItDao;
-import pl.input.UserInputCommand;
-import pl.model.WhatNumberIsItComment;
+import pl.monika.littleGames.dao.WhatNumberIsItDao;
+import pl.monika.littleGames.input.UserInputCommand;
+import pl.monika.littleGames.model.WhatNumberIsItComment;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 public class WhatNumberIsItHandler extends BaseCommandHandler {
 
 
+    private static Logger LOG = Logger.getLogger(WhatNumberIsItHandler.class.getName());
     public static final String COMMAND_NAME = "WhatNumberIsIt";
 
     private WhatNumberIsItDao whatNumberIsItDao;
@@ -24,27 +26,34 @@ public class WhatNumberIsItHandler extends BaseCommandHandler {
     }
 
     @Override
-    public void handle(UserInputCommand command) {
-
+    public String handle(UserInputCommand command) {
+        if (command.getAction()== null){
+            throw new IllegalArgumentException("Action can not be null.");
+        }
         switch (command.getAction()) {
             case PLAY:
+                LOG.info("Start..");
                 whatNumberIsItDao.play();
                 break;
             case DESCRIPTION:
-                System.out.println("Descrription:");
+                LOG.info("Descrription:");
                 String description = whatNumberIsItDao.showDescription();
                 System.out.println(description);
                 break;
-
             case SHOW_COMMENTS:
-                System.out.println("Comments:");
+                LOG.info("Comments:");
                 List<WhatNumberIsItComment> comments = whatNumberIsItDao.findAllComments();
                 comments.forEach(System.out::println);
                 break;
             case ADD_COMMENT:
-                System.out.println("Add comment");
+                LOG.info("Add comment");
                 String comment = command.getParam().get(0);
                 whatNumberIsItDao.addComment(new WhatNumberIsItComment(comment));
+                break;
+            case REMOVE_COMMENT:
+                LOG.info("Remove comment");
+                String commentToRemove = command.getParam().get(0);
+                whatNumberIsItDao.removeComment(new WhatNumberIsItComment(commentToRemove));
                 break;
             default: {
                 throw new IllegalArgumentException(String.format("Unknown action: %s from command: %s",
@@ -52,6 +61,6 @@ public class WhatNumberIsItHandler extends BaseCommandHandler {
             }
 
         }
-
+        return null;
     }
 }

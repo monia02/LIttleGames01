@@ -1,4 +1,4 @@
-package pl.handlers;
+package pl.monika.littleGames.handlers;
 
 abstract class BaseCommandHandler implements CommandHandler {
     @Override

@@ -1,0 +1,12 @@
+Help:
+Allowed commands: help, quit, WhatNumberIsIt
+Allowed actions:
+play
+show_comments
+add_comment
+remove_comment
+description
+Command pattern: <command>.<action>.<param>
+Example: WhatNumberIsIt.add_comments.Example comment
+Allowed games:
+WhatNumberIsIt
