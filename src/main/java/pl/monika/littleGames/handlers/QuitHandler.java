@@ -1,8 +1,8 @@
-package pl.handlers;
+package pl.monika.littleGames.handlers;
 
 
-import pl.QuitLittleGamesException;
-import pl.input.UserInputCommand;
+import pl.monika.littleGames.QuitLittleGamesException;
+import pl.monika.littleGames.input.UserInputCommand;
 
 public class QuitHandler extends BaseCommandHandler {
     public static final String COMMAND_NAME = "quit";
@@ -13,7 +13,7 @@ public class QuitHandler extends BaseCommandHandler {
     }
 
     @Override
-    public void handle(UserInputCommand command) {
+    public String handle(UserInputCommand command) {
         throw new QuitLittleGamesException();
 
     }

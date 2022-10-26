@@ -1,17 +1,15 @@
-package pl.input;
+package pl.monika.littleGames.input;
 
 import java.util.Scanner;
 
 public class UserInputManager {
-
     private Scanner scanner;
 
     public UserInputManager() {
         scanner = new Scanner(System.in);
     }
 
-    public UserInputCommand nextCommand() {// zwrócenie komendy od user
-
+    public UserInputCommand nextCommand() {
         return new UserInputCommand(scanner.nextLine());
     }
 }

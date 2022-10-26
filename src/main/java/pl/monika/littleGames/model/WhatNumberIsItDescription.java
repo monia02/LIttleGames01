@@ -1,8 +1,7 @@
-package pl.model;
+package pl.monika.littleGames.model;
 
 public class WhatNumberIsItDescription {
     private String name;
-
 
     public WhatNumberIsItDescription() {
     }
