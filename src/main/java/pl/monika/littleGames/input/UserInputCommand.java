@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserInputCommand {
+
     private String command;
     private Action action;
     private List<String> param;
+
     public UserInputCommand(String line) {
 
         if (line != null) {
-            String[] array = line.split("\\.");
+            String[] array = line.split("\\-");
             if (array.length > 0) {
                 command = array[0];
             }

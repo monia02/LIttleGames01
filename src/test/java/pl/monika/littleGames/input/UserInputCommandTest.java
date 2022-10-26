@@ -5,19 +5,31 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class UserInputCommandTest {
 
     @Test
     void shouldBuildCorrectUserInput() {
-        //given
-        String input = "WhatNumberIsIt.add_comment.aa";
-        //when
+
+        String input = "WhatNumberIsIt-add_comment-aa";
+
         UserInputCommand userInputCommand = new UserInputCommand(input);
-        //then
+
         Assertions.assertEquals("WhatNumberIsIt", userInputCommand.getCommand());
-        Assertions.assertEquals("add_comment", userInputCommand.getAction());
+        Assertions.assertEquals("add_comment", userInputCommand.getAction().getValue());
         Assertions.assertLinesMatch(List.of("aa"), userInputCommand.getParam());
     }
+
+    @Test
+    void shouldBuildCorrectUserInputWithoutParams() {
+
+        String input = "WhatNumberIsIt-show_comment";
+
+        UserInputCommand userInputCommand = new UserInputCommand(input);
+
+        Assertions.assertEquals("WhatNumberIsIt", userInputCommand.getCommand());
+        Assertions.assertEquals("show_comment", userInputCommand.getAction().getValue());
+        Assertions.assertLinesMatch(List.of(), userInputCommand.getParam());
+    }
+
+
 }

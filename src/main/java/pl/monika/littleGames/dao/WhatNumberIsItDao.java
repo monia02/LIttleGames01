@@ -7,27 +7,19 @@ import pl.monika.littleGames.model.WhatNumberIsItComment;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class WhatNumberIsItDao {
     private static final Logger LOG = Logger.getLogger(WhatNumberIsItDao.class.getName());
-//TODO
-    /*
-    co może pójśc nie tak:
-    zamykanie plików tekstowych
-    wprowadzenie strumieni
-
-    Wzorzec DAO jest abstrakcją do operowania na
-    danych znajdujących się w bazie. Dzięki niej można dodawać, aktualizować, pobierać i usuwać dane.
-     */
-
     private ObjectMapper objectMapper;
 
     public WhatNumberIsItDao() {
         this.objectMapper = new ObjectMapper();
     }
+
     public String showDescription() {
         try {
             String description = Files.readString(Paths.get("./WhatNumberIsItDescription.txt"));
@@ -37,6 +29,7 @@ public class WhatNumberIsItDao {
             return "";
         }
     }
+
     public List<WhatNumberIsItComment> getComments() {
         try {
             return objectMapper.readValue(Files.readString(Paths.get("./WhatNumberIsItComments.txt")), new TypeReference<>() {
@@ -46,9 +39,11 @@ public class WhatNumberIsItDao {
             return new ArrayList<>();
         }
     }
+
     public List<WhatNumberIsItComment> findAllComments() {
         return getComments();
     }
+
     public void addComment(WhatNumberIsItComment whatNumberIsItComment) {
         try {
             List<WhatNumberIsItComment> whatNumberIsItComments = getComments();
@@ -58,6 +53,7 @@ public class WhatNumberIsItDao {
             LOG.log(Level.WARNING, "Error on addComment", e);
         }
     }
+
     public void removeComment(WhatNumberIsItComment whatNumberIsItComment) {
         try {
             List<WhatNumberIsItComment> whatNumberIsItComments = getComments();

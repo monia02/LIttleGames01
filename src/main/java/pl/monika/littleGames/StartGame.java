@@ -20,15 +20,17 @@ import java.util.logging.Logger;
 public class StartGame {
 
     private static Logger LOG = Logger.getLogger(StartGame.class.getName());
+
     public static void main(String[] args) {
         new StartGame().start();
     }
+
     private void start() {
         try {
             String startMessage = Files.readString(Path.of("./StartMessage.txt"));
             System.out.println(startMessage);
         } catch (IOException e) {
-            LOG.log(Level.WARNING,"Error on start");
+            LOG.log(Level.WARNING, "Error on start");
         }
         boolean appLoop = true;
         UserInputManager userInputManager = new UserInputManager();

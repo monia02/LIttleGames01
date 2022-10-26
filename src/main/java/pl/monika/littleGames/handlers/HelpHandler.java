@@ -26,7 +26,7 @@ public class HelpHandler extends BaseCommandHandler {
             System.out.println(helpText);
             return "";
         } catch (IOException e) {
-            LOG.log(Level.WARNING, "Something went wrong.",e);
+            LOG.log(Level.WARNING, "Something went wrong.", e);
             return null;
         }
     }

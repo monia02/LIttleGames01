@@ -9,12 +9,13 @@ import java.util.logging.Logger;
 public class WhatNumberIsItPlay {
 
     private static Logger LOG = Logger.getLogger(WhatNumberIsItPlay.class.getName());
+
     public void play() {
         try {
             LOG.info("Losowanie liczby z zakresu od 0 do 100. Zgadnij jaka to liczba!");
             Scanner scanner = new Scanner(System.in);
             Random num = new Random();
-            int number = num.nextInt(101);
+            Integer number = num.nextInt(101);
             boolean goal = false;
             int counter = 0;
             while (!goal) {
