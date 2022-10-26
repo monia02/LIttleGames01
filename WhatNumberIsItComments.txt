@@ -1,9 +1,1 @@
-aabb
-a
-ab
-1
-1
-To jest długi komentarz
-To jest kolejny długi komentarz
-OK ok
-1 5 
+[{"name":"1"},{"name":"2"},{"name":"3"},{"name":"1"}]

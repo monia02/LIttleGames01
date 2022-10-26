@@ -1,6 +1,7 @@
 package pl.monika.littleGames.handlers;
 
 import pl.monika.littleGames.dao.WhatNumberIsItDao;
+import pl.monika.littleGames.games.WhatNumberIsItPlay;
 import pl.monika.littleGames.input.UserInputCommand;
 import pl.monika.littleGames.model.WhatNumberIsItComment;
 
@@ -8,17 +9,15 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class WhatNumberIsItHandler extends BaseCommandHandler {
-
-
     private static Logger LOG = Logger.getLogger(WhatNumberIsItHandler.class.getName());
     public static final String COMMAND_NAME = "WhatNumberIsIt";
-
     private WhatNumberIsItDao whatNumberIsItDao;
+    private WhatNumberIsItPlay whatNumberIsItPlay;
 
     public WhatNumberIsItHandler() {
         whatNumberIsItDao = new WhatNumberIsItDao();
+        whatNumberIsItPlay = new WhatNumberIsItPlay();
     }
-
 
     @Override
     protected String getCommandName() {
@@ -27,13 +26,13 @@ public class WhatNumberIsItHandler extends BaseCommandHandler {
 
     @Override
     public String handle(UserInputCommand command) {
-        if (command.getAction()== null){
+        if (command.getAction() == null) {
             throw new IllegalArgumentException("Action can not be null.");
         }
         switch (command.getAction()) {
             case PLAY:
                 LOG.info("Start..");
-                whatNumberIsItDao.play();
+                whatNumberIsItPlay.play();
                 break;
             case DESCRIPTION:
                 LOG.info("Descrription:");
@@ -59,7 +58,6 @@ public class WhatNumberIsItHandler extends BaseCommandHandler {
                 throw new IllegalArgumentException(String.format("Unknown action: %s from command: %s",
                         command.getAction(), command.getCommand()));
             }
-
         }
         return null;
     }
