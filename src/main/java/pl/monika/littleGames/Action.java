@@ -10,6 +10,7 @@ public enum Action {
         this.value = value;
     }
 
+
     public static Action of(String value) {
         for (Action action : values()) {
             if (Objects.equals(action.value, value)) {
