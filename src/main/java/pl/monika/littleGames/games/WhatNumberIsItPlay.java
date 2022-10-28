@@ -7,15 +7,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class WhatNumberIsItPlay {
-
+    Scanner scanner = new Scanner(System.in);
     private static Logger LOG = Logger.getLogger(WhatNumberIsItPlay.class.getName());
+
+    private int createRandomNumber() {
+        LOG.info("Losowanie liczby z zakresu od 0 do 100. Zgadnij jaka to liczba!");
+        Random num = new Random();
+        Integer number = num.nextInt(101);
+        return number;
+    }
 
     public void play() {
         try {
-            LOG.info("Losowanie liczby z zakresu od 0 do 100. Zgadnij jaka to liczba!");
-            Scanner scanner = new Scanner(System.in);
-            Random num = new Random();
-            Integer number = num.nextInt(101);
+            int number = createRandomNumber();
             boolean goal = false;
             int counter = 0;
             while (!goal) {

@@ -30,6 +30,4 @@ class UserInputCommandTest {
         Assertions.assertEquals("show_comment", userInputCommand.getAction().getValue());
         Assertions.assertLinesMatch(List.of(), userInputCommand.getParam());
     }
-
-
 }
